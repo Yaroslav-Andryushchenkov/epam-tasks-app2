@@ -19,7 +19,8 @@ var Config = {
         home: directories.controllers + '/home',
         form: directories.controllers + '/form',
         items: directories.controllers + '/items',
-        front: directories.controllers + '/front'
+        front: directories.controllers + '/front',
+        catsClicker: directories.controllers + '/cats-clicker'
     },
 
     getController: function(name) {
