@@ -10,18 +10,38 @@
     function catsCollectionCtrl(catsSrv) {
         var cats = this;
 
+        cats.selected = 0;
         cats.items = catsSrv.getCats();
         cats.selectCat = selectCat;
-        cats.selected = 0;
+        cats.addVote = addVote;
+        cats.removeVote = removeVote;
 
         function selectCat(name){
-            for (i=0; i<cats.items.length; i++) {
-                if(cats.items[i].name === name){
-                    cats.items[i].counter++;
-                    cats.selected = i;
-                }
+            var index = findCatIndexByName(name);
+            cats.selected = index;
+            cats.items[index].tick = true;
+        }
+
+        function addVote(name){
+            var index = findCatIndexByName(name);
+            cats.items[index].votes++;
+        }
+
+        function removeVote(name){
+            var index = findCatIndexByName(name);
+            if (cats.items[index].votes > 0){
+                cats.items[index].votes--;
             }
 
         }
+
+        function findCatIndexByName(name) {
+            for (i=0; i<cats.items.length; i++) {
+                if(cats.items[i].name === name){
+                    return i;
+                }
+            }
+        }
+
     }
 })();

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/cats-clicker/catsClicker.css">
     <title>Cats clicker</title>
 
 </head>
@@ -13,18 +14,21 @@
 
         <img ng-click="catsList.selectCat(cat.name)" ng-src="{{cat.image}}">
         </img>
-        <p>name:{{cat.name}}</p>
-        <p>clcks:{{cat.counter}}</p>
+        <p>name:{{cat.name}} <span ng-show="cat.tick" class="tick">&#252;</span> </p>
 
     </div>
 
     <div>
         <h2>Selected cat</h2>
+
         <img ng-src="{{catsList.items[catsList.selected].image}}">
         </img>
 
         <p>name:{{catsList.items[catsList.selected].name}}</p>
-        <p>clcks:{{catsList.items[catsList.selected].counter}}</p>
+        <p><span class="spinner-arrow" ng-click="catsList.addVote(catsList.items[catsList.selected].name)">&#9650</span>
+            votes:{{catsList.items[catsList.selected].votes}}
+            <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].name)">&#9660</span>
+        </p>
     </div>
 
 </div>
