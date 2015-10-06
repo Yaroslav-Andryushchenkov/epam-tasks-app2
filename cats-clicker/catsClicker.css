@@ -7,3 +7,7 @@
     cursor: pointer;
     min-width: 20px;
 }
+
+.search-panel {
+    margin:20px;
+}

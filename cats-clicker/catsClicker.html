@@ -10,7 +10,19 @@
 <body ng-app="catsClicker">
 
 <div ng-controller="catsCollectionCtrl as catsList">
-    <div style="display:inline-block" ng-repeat="cat in catsList.items | orderBy:'name'" >
+
+    <div class="search-panel">
+        <label for="cat-name">Name</label>
+        <input type="text" name="cat-name" id="cat-name" ng-model="catsList.nameFilter"/>
+        <label for="sort-order">Sorting</label>
+        <select type="text" name="sort-order" id="sort-order" ng-model="catsList.sorting">
+            <option value='asc' >Ascending</option>
+            <option value='desc'>Descending</option>
+        </select>
+        <button class="search-button" ng-click="catsList.search();">Search</button>
+    </div>
+
+    <div style="display:inline-block" ng-repeat="cat in catsList.items | filter:catsList.searchObject | orderBy:'name':(catsList.sorting === 'desc') " >
 
         <img ng-click="catsList.selectCat(cat.name)" ng-src="{{cat.image}}">
         </img>
@@ -30,6 +42,7 @@
             <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].name)">&#9660</span>
         </p>
     </div>
+
 
 </div>
 </body>

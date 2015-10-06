@@ -11,10 +11,20 @@
         var cats = this;
 
         cats.selected = 0;
+        cats.sorting = 'asc';
+        cats.nameFilter = '';
+        cats.searchObject = {name:''};
         cats.items = catsSrv.getCats();
         cats.selectCat = selectCat;
         cats.addVote = addVote;
         cats.removeVote = removeVote;
+        cats.search = search;
+
+
+        function search() {
+            console.log(cats.sorting);
+            cats.searchObject.name = cats.nameFilter;
+        }
 
         function selectCat(name){
             var index = findCatIndexByName(name);
