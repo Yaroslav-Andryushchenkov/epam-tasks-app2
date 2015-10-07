@@ -1,0 +1,13 @@
+.tick {
+    font-family: wingdings;
+    font-size: 200%;
+}
+
+.spinner-arrow {
+    cursor: pointer;
+    min-width: 20px;
+}
+
+.search-panel {
+    margin:20px;
+}

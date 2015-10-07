@@ -18,5 +18,15 @@ module.exports = [
         pattern: '/items',
         methods: ['GET'],
         action: 'items::getAction'
+    },
+    {
+        pattern: '/front/.*',
+        methods: ['GET'],
+        action: 'front::getFile'
+    },
+    {
+        pattern: '/cats-clicker/.*',
+        methods: ['GET'],
+        action: 'catsClicker::getFile'
     }
 ];

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="catsClicker" ng-controller="addCatCtrl as cat">
+
+<form role="form" name="addCat" novalidate >
+    <fieldset>
+        <legend>Add cat:</legend>
+        <div >
+            <label for="cat-name">Name:</label>
+            <input id="cat-name" type="text" name="name" ng-model="cat.newCat.name" />
+        </div>
+        <div >
+            <label for="cat-url">URL:</label>
+            <input type="url" required id="cat-url" name="url" ng-model="cat.newCat.url" />
+                <span class="error-message" ng-show="addCat.url.$dirty && addCat.url.$invalid">
+                    <span ng-show="addCat.url.$error.required">Url is required.</span>
+                    <span ng-show="addCat.url.$error.url">Invalid URL.</span>
+                </span>
+        </div>
+        <div>
+            <label for="cat-image">Image:</label>
+            <input type="url" required id="cat-image" name="image" ng-model="cat.newCat.image" />
+                <span class="error-message" ng-show="addCat.image.$dirty && addCat.image.$invalid">
+                    <span ng-show="addCat.image.$error.required">Image is required.</span>
+                    <span ng-show="addCat.image.$error.url">Invalid image uri.</span>
+                </span>
+        </div>
+
+        <button  name="btnCancel" ng-click="cat.cancel()"  type="cancel">Cancel</button>
+        <button  name="btnSubmit"  type="submit">Submit</button>
+
+    </fieldset>
+</form>
+
+</body>
+
+<script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/cats-clicker/angular.js"></script>
+<script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
+<script language="JavaScript" src="/cats-clicker/addCatCtrl.js"></script>
+
+</html>
