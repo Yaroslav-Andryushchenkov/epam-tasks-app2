@@ -15,6 +15,7 @@ exports.getFile = function(request, response) {
 };
 
 exports.getAction = function (request, response) {
+    console.log('wwwww');
     fs.exists(config.database.path, function (isExists) {
         response.writeHead(200, {'Content-Type': 'application/json'});
 
@@ -28,6 +29,8 @@ exports.getAction = function (request, response) {
 };
 
 exports.postAction = function (request, response, pathname, postData) {
+    console.log('ZZZZ');
+    /*
     postData = qs.parse(postData);
 
     fs.readFile(config.database.path, function (err, data) {
@@ -47,4 +50,5 @@ exports.postAction = function (request, response, pathname, postData) {
             }
         });
     });
+    */
 };

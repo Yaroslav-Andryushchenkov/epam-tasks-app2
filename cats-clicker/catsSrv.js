@@ -5,9 +5,29 @@
     angular.module('catsClicker')
         .service('catsSrv', catsSrv);
 
-    function catsSrv() {
+    catsSrv.$inject = ['$http'];
+
+    function catsSrv($http) {
         this.getCats = getCats;
+        this.addCat = addCat;
     }
+
+    function addCat(cat) {
+        var postData = "";
+        var conjunction = "";
+
+        for (field in cat) {
+            postData += conjunction + field + '=' + encodeURIComponent(cat[field]);
+            if (conjunction === '')
+                conjunction = "&";
+
+        }
+
+        return $http.post('/cats-clicker-api', postData).then(function(data){
+            return data.data;
+        });
+    }
+
 
     function getCats(){
         return  [
@@ -40,7 +60,7 @@
                 votes: 0,
                 tick: false,
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwVxim3d71tGA8gPYejl3H43myMcnRpVeH2AK1zolwlgwtYdoN',
-            },
+            }
         ]
     };
 })();

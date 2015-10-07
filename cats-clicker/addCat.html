@@ -6,7 +6,7 @@
 </head>
 <body ng-app="catsClicker" ng-controller="addCatCtrl as cat">
 
-<form role="form" name="addCat" novalidate >
+<form role="form" name="addCat" novalidate ng-submit="addCat.$valid && cat.addNewCat()">
     <fieldset>
         <legend>Add cat:</legend>
         <div >
@@ -41,6 +41,7 @@
 <script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/cats-clicker/angular.js"></script>
 <script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
+<script language="JavaScript" src="/cats-clicker/catsSrv.js"></script>
 <script language="JavaScript" src="/cats-clicker/addCatCtrl.js"></script>
 
 </html>

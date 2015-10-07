@@ -5,7 +5,9 @@
     angular.module('catsClicker')
         .controller('addCatCtrl', addCatCtrl);
 
-    function addCatCtrl($scope) {
+    //addCatCtrl.$inject['catsSrv'];
+
+    function addCatCtrl($scope, catsSrv) {
         var cat = this;
         cat.newCat = {
             name: '',
@@ -13,13 +15,13 @@
             image: ''
         };
         cat.addNewCat = addNewCat;
-        cat.cancel = cancel;
+        cat.cancel = clearForm;
 
         function addNewCat() {
-            return true;
+            catsSrv.addCat(cat.newCat).then(clearForm());
         }
 
-        function cancel() {
+        function clearForm() {
             cat.newCat.name = '';
             cat.newCat.url = '';
             cat.newCat.image = '';

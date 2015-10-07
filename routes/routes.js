@@ -42,6 +42,6 @@ module.exports = [
     {
         pattern: '/cats-clicker-api',
         methods: ['GET'],
-        action: 'icatsClicker::getAction'
-    },
+        action: 'catsClicker::getAction'
+    }
 ];
