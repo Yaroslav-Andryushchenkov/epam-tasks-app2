@@ -28,5 +28,20 @@ module.exports = [
         pattern: '/cats-clicker/.*',
         methods: ['GET'],
         action: 'catsClicker::getFile'
-    }
+    },
+    {
+        pattern: '/cats-clicker-api',
+        methods: ['POST'],
+        action: 'catsClicker::postAction'
+    },
+    {
+        pattern: '/cats-clicker-api',
+        methods: ['DELETE'],
+        action: 'catsClicker::deleteAllAction'
+    },
+    {
+        pattern: '/cats-clicker-api',
+        methods: ['GET'],
+        action: 'icatsClicker::getAction'
+    },
 ];

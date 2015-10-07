@@ -13,6 +13,7 @@ var Config = {
 
     database: {
         path: projectDir + '/db/db.json'
+
     },
 
     controllers: {
