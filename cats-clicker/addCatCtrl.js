@@ -5,7 +5,7 @@
     angular.module('catsClicker')
         .controller('addCatCtrl', addCatCtrl);
 
-    //addCatCtrl.$inject['catsSrv'];
+    addCatCtrl.$inject = ['$scope', 'catsSrv'];
 
     function addCatCtrl($scope, catsSrv) {
         var cat = this;
@@ -28,4 +28,6 @@
             $scope.addCat.$setPristine();
         }
     }
+
+
 })();
