@@ -14,7 +14,7 @@
             <input id="user-name" type="text" name="name" ng-model="user.newUser.name" />
         </div>
         <div >
-            <label for="user-email">URL:</label>
+            <label for="user-email">Email:</label>
             <input type="email" required id="user-email" name="email" ng-model="user.newUser.email" />
                 <span class="error-message" ng-show="addUser.email.$dirty && addUser.email.$invalid">
                     <span ng-show="addUser.email.$error.required">Email is required.</span>
@@ -22,14 +22,14 @@
                 </span>
         </div>
         <div>
-            <label for="user-password">Image:</label>
+            <label for="user-password">Password:</label>
             <input type="password" required id="user-password" name="password" ng-model="user.newUser.password" />
                 <span class="error-message" ng-show="addUser.password.$dirty && addUser.password.$invalid">
                     <span ng-show="addUser.password.$error.required">Password is required.</span>
                 </span>
         </div>
         <div>
-            <label for="user-confirm-password">Image:</label>
+            <label for="user-confirm-password">Confirm password:</label>
             <input type="password" required id="user-confirm-password" name="confirmation" ng-model="user.newUser.confirmation" />
                 <span class="error-message" ng-show="addUser.confirmation.$dirty && addUser.confirmation.$invalid">
                     <span ng-show="addUser.confirmation.$error.required">Password confirmation is required.</span>
