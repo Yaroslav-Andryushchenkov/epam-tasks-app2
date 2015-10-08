@@ -14,15 +14,17 @@
         cats.sorting = 'asc';
         cats.nameFilter = '';
         cats.searchObject = {name:''};
-        cats.items = catsSrv.getCats();
+        cats.items = [];
         cats.selectCat = selectCat;
         cats.addVote = addVote;
         cats.removeVote = removeVote;
         cats.search = search;
 
+        catsSrv.getCats().then(function(items){
+            cats.items = items;
+        });
 
         function search() {
-            console.log(cats.sorting);
             cats.searchObject.name = cats.nameFilter;
         }
 
