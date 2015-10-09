@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-app="catsClicker" ng-controller="addUserCtrl as user">
+<body ng-app="user" ng-controller="addUserCtrl as user">
 
 <form role="form" name="addUser" novalidate ng-submit="addUser.$valid && user.addNewUser()">
     <fieldset>
@@ -30,9 +30,10 @@
         </div>
         <div>
             <label for="user-confirm-password">Confirm password:</label>
-            <input type="password" required id="user-confirm-password" name="confirmation" ng-model="user.newUser.confirmation" />
+            <input type="password" required pw-check="user-password" id="user-confirm-password" name="confirmation" ng-model="user.newUser.confirmation" />
                 <span class="error-message" ng-show="addUser.confirmation.$dirty && addUser.confirmation.$invalid">
                     <span ng-show="addUser.confirmation.$error.required">Password confirmation is required.</span>
+                    <span ng-show="addUser.confirmation.$error.pwmatch">Password and confirmation must coincide.</span>
                 </span>
         </div>
 
@@ -45,9 +46,11 @@
 </body>
 
 <script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/cats-clicker/angular.js"></script>
-<script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
-<script language="JavaScript" src="/cats-clicker/userSrv.js"></script>
-<script language="JavaScript" src="/cats-clicker/addUserCtrl.js"></script>
+<script src="/cats-clicker/libs/angular.js"></script>
+<script language="JavaScript" src="/cats-clicker/sections/user.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/user/addUserCtrl.js"></script>
+
+
 
 </html>

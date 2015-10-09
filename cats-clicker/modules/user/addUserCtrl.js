@@ -2,7 +2,7 @@
  * Created by Yaroslav_Andryushche on 10/5/2015.
  */
 (function(){
-    angular.module('catsClicker')
+    angular.module('user')
         .controller('addUserCtrl', addUserCtrl);
 
     addUserCtrl.$inject = ['$scope', 'userSrv'];
@@ -19,7 +19,10 @@
         user.cancel = clearForm;
 
         function addNewUser() {
-            userSrv.addUser(user.newCat);
+            if(user.newUser.password != user.newUser.confirmation) {
+                $scope.addUser.confirmation.$setValidity('pwmatch', false);
+            }
+            userSrv.addUser(user.newUser);
         }
 
         function clearForm() {

@@ -2,7 +2,7 @@
  * Created by Yaroslav_Andryushche on 10/8/2015.
  */
 (function(){
-    angular.module('catsClicker')
+    angular.module('user')
         .service('userSrv', userSrv);
 
     function userSrv($http) {
