@@ -30,10 +30,10 @@
         </div>
         <div>
             <label for="user-confirm-password">Confirm password:</label>
-            <input type="password" required pw-check="user-password" id="user-confirm-password" name="confirmation" ng-model="user.newUser.confirmation" />
+            <input type="password" required confirmation-check="user-password" id="user-confirm-password" name="confirmation" ng-model="user.newUser.confirmation" />
                 <span class="error-message" ng-show="addUser.confirmation.$dirty && addUser.confirmation.$invalid">
                     <span ng-show="addUser.confirmation.$error.required">Password confirmation is required.</span>
-                    <span ng-show="addUser.confirmation.$error.pwmatch">Password and confirmation must coincide.</span>
+                    <span ng-show="addUser.confirmation.$error.mismatch">Password and confirmation must coincide.</span>
                 </span>
         </div>
 
@@ -50,6 +50,7 @@
 <script language="JavaScript" src="/cats-clicker/sections/user.js"></script>
 <script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
 <script language="JavaScript" src="/cats-clicker/modules/user/addUserCtrl.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/commonUI/confirmationCheckDirective.js"></script>
 
 
 
