@@ -8,8 +8,15 @@
     function userSrv($http) {
         this.addUser = addUser;
 
-        function addUser(usdr) {
-            // there must be saving to local storage loginc
+        function addUser(user) {
+            var key = 'user_' + user.name;
+            var localUser = window.localStorage.getItem(key);
+            if(!localUser) {
+                user.id = new Date().toISOString().replace(/[^\d]/g, '');
+                window.localStorage.setItem(key, user);
+                return true
+            }
+            return false;
         }
     }
 

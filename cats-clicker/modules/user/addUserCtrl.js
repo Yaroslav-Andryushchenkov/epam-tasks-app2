@@ -15,14 +15,17 @@
             password: '',
             confirmation: ''
         };
+        user.notification = '';
         user.addNewUser = addNewUser;
         user.cancel = clearForm;
 
         function addNewUser() {
-            if(user.newUser.password != user.newUser.confirmation) {
-                $scope.addUser.confirmation.$setValidity('pwmatch', false);
+            if( userSrv.addUser(user.newUser)) {
+                user.notification = 'User successfully added';
             }
-            userSrv.addUser(user.newUser);
+            else {
+                user.notification = 'User with the same name already exists';
+            }
         }
 
         function clearForm() {
