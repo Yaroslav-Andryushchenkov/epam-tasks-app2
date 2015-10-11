@@ -5,9 +5,9 @@
     angular.module('catsClicker')
         .controller('catsCollectionCtrl', catsCollectionCtrl);
 
-    catsCollectionCtrl.$inject = ['catsSrv'];
+    catsCollectionCtrl.$inject = ['catsSrv', 'userSrv'];
 
-    function catsCollectionCtrl(catsSrv) {
+    function catsCollectionCtrl(catsSrv, userSrv) {
         var cats = this;
 
         cats.selected = 0;
@@ -19,6 +19,7 @@
         cats.addVote = addVote;
         cats.removeVote = removeVote;
         cats.search = search;
+        cats.canDelete = canDelete;
 
         catsSrv.getCats().then(function(items){
             cats.items = items;
@@ -53,6 +54,26 @@
                     return i;
                 }
             }
+
+            return null;
+        }
+
+        function canDelete(name){
+            var index = findCatIndexByName(name);
+            if(index == null) {
+                return false;
+            }
+
+            if(!cats.items[index].hasOwnProperty('userId')) {
+                cats.items[index].userId = 0;
+            }
+
+            var currentUser = userSrv.getCurrentUser();
+            if(cats.items[index].userId === currentUser.id) {
+                return true;
+            }
+
+            return false;
         }
 
     }

@@ -27,6 +27,7 @@
         <img ng-click="catsList.selectCat(cat.name)" ng-src="{{cat.image}}">
         </img>
         <p>name:{{cat.name}} <span ng-show="cat.tick" class="tick">&#252;</span> </p>
+        <p ng-show="catsList.canDelete(cat.name)"><a href="#">Delete</a></p>
 
     </div>
 
@@ -41,6 +42,7 @@
             votes:{{catsList.items[catsList.selected].votes}}
             <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].name)">&#9660</span>
         </p>
+
     </div>
 
 
@@ -49,7 +51,9 @@
 
 <script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/cats-clicker/libs/angular.js"></script>
+<script src="/cats-clicker/libs/angular-cookies.js"></script>
 <script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
 <script language="JavaScript" src="/cats-clicker/modules/catsClicker/catsCollectionCtrl.js"></script>
 <script language="JavaScript" src="/cats-clicker/modules/catsClicker/catsSrv.js"></script>
 </html>
