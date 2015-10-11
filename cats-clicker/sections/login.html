@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="user" ng-controller="loginCtrl as user">
+
+<form role="form" name="loginUser" novalidate ng-submit="user.login()">
+    <fieldset>
+        <legend>Log in:</legend>
+        <div >
+            <label for="user-name">Name:</label>
+            <input id="user-name" type="text" name="name" ng-model="user.credential.name" />
+        </div>
+        <div>
+            <label for="user-password">Password:</label>
+            <input type="password" id="user-password" name="password" ng-model="user.credential.password" />
+
+        </div>
+        <button  name="btnSubmit"  type="submit">Log in</button>
+
+    </fieldset>
+</form>
+
+<p>{{user.notification}}</p>
+
+</body>
+
+<script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/cats-clicker/libs/angular.js"></script>
+<script language="JavaScript" src="/cats-clicker/sections/login.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
+<script language="JavaScript" src="/cats-clicker/modules/user/loginCtrl.js"></script>
+
+
+
+</html>
