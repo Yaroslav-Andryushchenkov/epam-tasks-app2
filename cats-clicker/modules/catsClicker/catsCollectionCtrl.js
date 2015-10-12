@@ -71,7 +71,7 @@
             }
 
             var currentUser = userSrv.getCurrentUser();
-            if(cats.items[index].userId === currentUser.id) {
+            if(cats.items[index].userId == currentUser.id) {
                 return true;
             }
 
@@ -80,9 +80,12 @@
 
         function deleteCat(id) {
             catsSrv.deleteCat(id).then(function (data) {
-                var index = findCatIndexById(data.id);
-                if(index !== null) {
-                    delete(caats.item(index));
+                for(i=0; i<data.length; i++)
+                {
+                    var index = findCatIndexById(data[i].id);
+                    if(index !== null) {
+                        delete cats.items[index];
+                    }
                 }
             });
         }
