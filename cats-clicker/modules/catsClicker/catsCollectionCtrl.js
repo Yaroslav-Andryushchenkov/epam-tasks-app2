@@ -20,6 +20,8 @@
         cats.removeVote = removeVote;
         cats.search = search;
         cats.canDelete = canDelete;
+        cats.deleteCat = deleteCat;
+        cats.currentUser = userSrv.getCurrentUser();
 
         catsSrv.getCats().then(function(items){
             cats.items = items;
@@ -29,28 +31,28 @@
             cats.searchObject.name = cats.nameFilter;
         }
 
-        function selectCat(name){
-            var index = findCatIndexByName(name);
+        function selectCat(id){
+            var index = findCatIndexById(id);
             cats.selected = index;
             cats.items[index].tick = true;
         }
 
-        function addVote(name){
-            var index = findCatIndexByName(name);
+        function addVote(id){
+            var index = findCatIndexById(id);
             cats.items[index].votes++;
         }
 
-        function removeVote(name){
-            var index = findCatIndexByName(name);
+        function removeVote(id){
+            var index = findCatIndexById(id);
             if (cats.items[index].votes > 0){
                 cats.items[index].votes--;
             }
 
         }
 
-        function findCatIndexByName(name) {
+        function findCatIndexById(id) {
             for (i=0; i<cats.items.length; i++) {
-                if(cats.items[i].name === name){
+                if(cats.items[i].id === id){
                     return i;
                 }
             }
@@ -58,8 +60,8 @@
             return null;
         }
 
-        function canDelete(name){
-            var index = findCatIndexByName(name);
+        function canDelete(id){
+            var index = findCatIndexById(id);
             if(index == null) {
                 return false;
             }
@@ -75,6 +77,16 @@
 
             return false;
         }
+
+        function deleteCat(id) {
+            catsSrv.deleteCat(id).then(function (data) {
+                var index = findCatIndexById(data.id);
+                if(index !== null) {
+                    delete(caats.item(index));
+                }
+            });
+        }
+
 
     }
 })();

@@ -16,46 +16,73 @@
         activate();
 
         function activate(){
-            var anonymous = {
-                name: 'anonymous',
-                password: '',
-                email: '',
-                id: 0
+            var currentUser = getCurrentUser();
+            if(!currentUser) {
+                var anonymous = {
+                    name: 'anonymous',
+                    password: '',
+                    email: '',
+                    id: 0
+                }
+                addUser(anonymous);
+                login(anonymous);
             }
-            addUser(anonymous);
-            login(anonymous);
         }
 
         function addUser(user) {
             var key = 'user_' + user.name;
             var localUser = window.localStorage.getItem(key);
-            if(!localUser) {
-                user.id = new Date().toISOString().replace(/[^\d]/g, '');
-                window.localStorage.setItem(key, user);
+            try{
+                localUser = JSON.parse(localUser);
+                if(!!localUser.name) {
+                    saveUser(user);
+                    return true;
+                }
+            }
+            catch(e) {
+                saveUser(user);
+                return true;
+            }
+
+            return false;
+
+            function saveUser(user) {
+                var key = 'user_' + user.name;
+                if (typeof user.id === "undefined") {
+                    user.id = new Date().toISOString().replace(/[^\d]/g, '');
+                }
+                window.localStorage.setItem(key, JSON.stringify(user));
                 return true
             }
-            return false;
         }
 
         function login(user) {
             var key = 'user_' + user.name;
             var localUser = window.localStorage.getItem(key);
-
-            if(!localUser) {
-                return false
+            try{
+                localUser = JSON.parse(localUser);
+                if(!!localUser && localUser.password === user.password){
+                    $cookies.put('currentUser', JSON.stringify(localUser),{path:'/cats-clicker'});
+                    return true;
+                }
             }
-            if(localUser.password === user.password){
-                $cookies.put('currentUser', localUser);
-                return true;
-            }
-            else {
+            catch(e) {
                 return false;
             }
 
+            return false;
         }
 
         function getCurrentUser() {
-            return $cookies.get('currentUser');
+            var user = null;
+            try{
+                user = JSON.parse($cookies.get('currentUser'));
+                return user;
+            }
+            catch(e){
+                return null;
+            }
+
         }
     }
 

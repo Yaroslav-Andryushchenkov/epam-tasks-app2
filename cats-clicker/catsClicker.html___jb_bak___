@@ -27,7 +27,7 @@
         <img ng-click="catsList.selectCat(cat.id)" ng-src="{{cat.image}}">
         </img>
         <p>name:{{cat.name}} <span ng-show="cat.tick" class="tick">&#252;</span> </p>
-        <p ng-show="catsList.canDelete(cat.id)" ng-click="catsList.deleteCat(cat.id)"><a>Delete</a></p>
+        <p ng-show="catsList.canDelete(cat.id)" ng-click="catsList.deleteCat(cat.id)"><a href="">Delete</a></p>
 
     </div>
 

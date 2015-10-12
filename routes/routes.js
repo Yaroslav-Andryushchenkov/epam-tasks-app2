@@ -37,7 +37,7 @@ module.exports = [
     {
         pattern: '/cats-clicker-api',
         methods: ['DELETE'],
-        action: 'catsClicker::deleteAllAction'
+        action: 'catsClicker::deleteAction'
     },
     {
         pattern: '/cats-clicker-api',

@@ -3,5 +3,5 @@
  */
 (function() {
     angular.module('commonUI',[]);
-    angular.module('user', ['commonUI']);
+    angular.module('user', ['commonUI','ngCookies']);
 })();

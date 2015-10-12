@@ -5,15 +5,19 @@
     angular.module('catsClicker')
         .service('catsSrv', catsSrv);
 
-    catsSrv.$inject = ['$http'];
+    catsSrv.$inject = ['$http', 'userSrv'];
 
-    function catsSrv($http) {
+    function catsSrv($http, userSrv) {
         this.getCats = getCats;
         this.addCat = addCat;
+        this.deleteCat = deleteCat;
 
         function addCat(cat) {
             var postData = "";
             var conjunction = "";
+
+            var currentUser = userSrv.getCurrentUser();
+            cat.userId = !!currentUser ? currentUser.id : 0;
 
             for (field in cat) {
                 postData += conjunction + field + '=' + encodeURIComponent(cat[field]);
@@ -40,6 +44,12 @@
             });
 
         };
+
+        function deleteCat(id) {
+            return $http.delete('/cats-clicker-api?id=' + id).then(function(data){
+                return data.data;
+            });
+        }
     }
 
 })();
