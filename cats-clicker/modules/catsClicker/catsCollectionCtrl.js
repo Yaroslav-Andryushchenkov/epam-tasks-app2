@@ -17,11 +17,12 @@
         cats.items = [];
         cats.selectCat = selectCat;
         cats.addVote = addVote;
+        cats.canVote = canVote;
         cats.removeVote = removeVote;
         cats.search = search;
         cats.canDelete = canDelete;
         cats.deleteCat = deleteCat;
-        cats.currentUser = userSrv.getCurrentUser();
+
 
         catsSrv.getCats().then(function(items){
             cats.items = items;
@@ -40,6 +41,13 @@
         function addVote(id){
             var index = findCatIndexById(id);
             cats.items[index].votes++;
+            userSrv.trackVote(userSrv.getCurrentUser().name, id);
+        }
+
+
+        function canVote(cat){
+            var currentUser = userSrv.getCurrentUser();
+            return userSrv.canVote(currentUser.name, cat);
         }
 
         function removeVote(id){
@@ -77,6 +85,8 @@
 
             return false;
         }
+
+
 
         function deleteCat(id) {
             catsSrv.deleteCat(id).then(function (data) {

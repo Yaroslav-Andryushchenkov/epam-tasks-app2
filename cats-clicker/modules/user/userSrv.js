@@ -12,6 +12,8 @@
         us.addUser = addUser;
         us.login = login;
         us.getCurrentUser = getCurrentUser;
+        us.canVote = canVote;
+        us.trackVote = trackVote;
 
         activate();
 
@@ -22,7 +24,7 @@
                     name: 'anonymous',
                     password: '',
                     email: '',
-                    id: 0
+                    id: 0,
                 }
                 addUser(anonymous);
                 login(anonymous);
@@ -51,16 +53,17 @@
                 if (typeof user.id === "undefined") {
                     user.id = new Date().toISOString().replace(/[^\d]/g, '');
                 }
+                if (typeof user.votes === "undefined") {
+                    user.votes=[];
+                }
                 window.localStorage.setItem(key, JSON.stringify(user));
                 return true
             }
         }
 
         function login(user) {
-            var key = 'user_' + user.name;
-            var localUser = window.localStorage.getItem(key);
             try{
-                localUser = JSON.parse(localUser);
+                var localUser = loadUser(user.name)
                 if(!!localUser && localUser.password === user.password){
                     $cookies.put('currentUser', JSON.stringify(localUser),{path:'/cats-clicker'});
                     return true;
@@ -73,6 +76,10 @@
             return false;
         }
 
+        function loadUser(name) {
+            return JSON.parse(window.localStorage.getItem('user_' + name));
+        }
+
         function getCurrentUser() {
             var user = null;
             try{
@@ -83,6 +90,32 @@
                 return null;
             }
 
+        }
+
+        function canVote(userName, cat) {
+            try {
+                var user = loadUser(userName);
+                if (user.id == cat.userId) {
+                    return false
+                }
+
+                for(i=0; i<user.votes.length; i++) {
+                    if (user.votes[i] == cat.id) {
+                        return false;
+                    }
+                }
+            }
+            catch(e) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function trackVote(userName, catId) {
+            var user = loadUser(userName);
+            user.votes.push(catId);
+            saveUser(user);
         }
     }
 

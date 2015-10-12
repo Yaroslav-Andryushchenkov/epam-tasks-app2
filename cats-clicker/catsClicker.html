@@ -38,13 +38,13 @@
         </img>
 
         <p>name:{{catsList.items[catsList.selected].name}}</p>
-        <p><span class="spinner-arrow" ng-click="catsList.addVote(catsList.items[catsList.selected].name)">&#9650</span>
+        <p ng-show="catsList.canVote(catsList.items[catsList.selected])"><span class="spinner-arrow" ng-click="catsList.addVote(catsList.items[catsList.selected].name)">&#9650</span>
             votes:{{catsList.items[catsList.selected].votes}}
             <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].name)">&#9660</span>
         </p>
 
     </div>
-    
+
 </div>
 </body>
 
