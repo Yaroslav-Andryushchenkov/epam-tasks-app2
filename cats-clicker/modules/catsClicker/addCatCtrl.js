@@ -14,11 +14,12 @@
             url: '',
             image: ''
         };
+        cat.notification = '';
         cat.addNewCat = addNewCat;
         cat.cancel = clearForm;
 
         function addNewCat() {
-            catsSrv.addCat(cat.newCat).then(clearForm());
+            catsSrv.addCat(cat.newCat).then(function(){cat.notification = 'Cat has been added';clearForm();});
         }
 
         function clearForm() {

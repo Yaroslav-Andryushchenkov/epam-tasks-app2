@@ -48,17 +48,18 @@
 
             return false;
 
-            function saveUser(user) {
-                var key = 'user_' + user.name;
-                if (typeof user.id === "undefined") {
-                    user.id = new Date().toISOString().replace(/[^\d]/g, '');
-                }
-                if (typeof user.votes === "undefined") {
-                    user.votes=[];
-                }
-                window.localStorage.setItem(key, JSON.stringify(user));
-                return true
+        }
+
+        function saveUser(user) {
+            var key = 'user_' + user.name;
+            if (typeof user.id === "undefined") {
+                user.id = new Date().toISOString().replace(/[^\d]/g, '');
             }
+            if (typeof user.votes === "undefined") {
+                user.votes=[];
+            }
+            window.localStorage.setItem(key, JSON.stringify(user));
+            return true
         }
 
         function login(user) {
