@@ -5,9 +5,10 @@
     angular.module('catsClicker')
         .config(config);
 
-    config.$inject = ['$routeProvider'];
+    config.$inject = [ '$routeProvider'];
 
-    function config($routeProvider) {
+    function config( $routeProvider) {
+        //$httpProvider.useApplyAsync(true);
         $routeProvider
             .when('/addCat',{
             templateUrl: '/cats-clicker/sections/addCat.html',

@@ -5,9 +5,9 @@
     angular.module('catsClicker')
         .controller('catsCollectionCtrl', catsCollectionCtrl);
 
-    catsCollectionCtrl.$inject = ['catsSrv', 'userSrv'];
+    catsCollectionCtrl.$inject = ['$scope','$rootScope','catsSrv', 'userSrv'];
 
-    function catsCollectionCtrl(catsSrv, userSrv) {
+    function catsCollectionCtrl($scope, $rootScope, catsSrv, userSrv) {
         var cats = this;
 
         cats.selected = 0;
@@ -23,10 +23,18 @@
         cats.canDelete = canDelete;
         cats.deleteCat = deleteCat;
 
+        activate();
 
-        catsSrv.getCats().then(function(items){
-            cats.items = items;
-        });
+        function activate() {
+            $rootScope.$on('AddNewCat', addNewCat);
+            catsSrv.getCats().then(function(items){
+                cats.items = items;
+            });
+        }
+
+        function addNewCat(event, cat){
+            cats.items.push(cat);
+        }
 
         function search() {
             cats.searchObject.name = cats.nameFilter;
@@ -60,7 +68,7 @@
 
         function findCatIndexById(id) {
             for (i=0; i<cats.items.length; i++) {
-                if(cats.items[i].id === id){
+                if(!!cats.items[i] && cats.items[i].id === id){
                     return i;
                 }
             }

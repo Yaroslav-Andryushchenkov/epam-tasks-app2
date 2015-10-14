@@ -9,6 +9,18 @@
 </head>
 <body ng-app="catsClicker">
 
+<div>
+    <ul>
+        <li><a href="#/login">login</a></li>
+        <li><a href="#/addCat">Add Cat</a></li>
+        <li><a href="#/addUser">Add User</a></li>
+        <li><a href="#">Cats list only</a></li>
+    </ul>
+
+</div>
+
+<ng-view></ng-view>
+
 <div ng-controller="catsCollectionCtrl as catsList">
 
     <div class="search-panel">
@@ -44,18 +56,10 @@
         </p>
 
     </div>
-    <div>
-        <ul>
-            <li><a href="#/login">Add Cat</a></li>
-            <li><a href="#/addCat">Add Cat</a></li>
-            <li><a href="#/addUser">Add Cat</a></li>
-            <li><a href="#">Cats list only</a></li>
-        </ul>
 
-    </div>
 </div>
 
-<ng-view></ng-view>
+
 
 </body>
 

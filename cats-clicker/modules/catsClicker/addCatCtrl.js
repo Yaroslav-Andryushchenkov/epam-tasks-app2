@@ -19,8 +19,15 @@
         cat.cancel = clearForm;
 
         function addNewCat() {
-            catsSrv.addCat(cat.newCat).then(function(){cat.notification = 'Cat has been added';clearForm();});
+            catsSrv.addCat(cat.newCat).then(onAddCat);
         }
+
+        function onAddCat(data){
+            cat.notification = 'Cat has been added'
+            clearForm();
+            $scope.$emit('AddNewCat', data);
+        }
+
 
         function clearForm() {
             cat.newCat.name = '';
