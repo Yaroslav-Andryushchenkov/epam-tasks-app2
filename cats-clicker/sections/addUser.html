@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-app="user" ng-controller="addUserCtrl as user">
+<div ng-controller="addUserCtrl as user">
 
 <form role="form" name="addUser" novalidate ng-submit="addUser.$valid && user.addNewUser()">
     <fieldset>
@@ -45,16 +45,4 @@
 
 <p>{{user.notification}}</p>
 
-</body>
-
-<script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/cats-clicker/libs/angular.js"></script>
-<script src="/cats-clicker/libs/angular-cookies.js"></script>
-<script language="JavaScript" src="/cats-clicker/sections/user.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/user/addUserCtrl.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/commonUI/confirmationCheckDirective.js"></script>
-
-
-
-</html>
+</div>

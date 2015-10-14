@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body ng-app="catsClicker" ng-controller="addCatCtrl as cat">
+<div ng-app="catsClicker" ng-controller="addCatCtrl as cat">
 
 <form role="form" name="addCat" novalidate ng-submit="addCat.$valid && cat.addNewCat()">
     <fieldset>
@@ -37,15 +31,4 @@
 </form>
 
 <p>{{cat.notification}}</p>
-
-</body>
-
-<script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/cats-clicker/libs/angular.js"></script>
-<script src="/cats-clicker/libs/angular-cookies.js"></script>
-<script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/user/userSrv.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/catsClicker/catsSrv.js"></script>
-<script language="JavaScript" src="/cats-clicker/modules/catsClicker/addCatCtrl.js"></script>
-
-</html>
+</div>

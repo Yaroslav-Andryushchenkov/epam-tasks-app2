@@ -24,7 +24,7 @@
                     name: 'anonymous',
                     password: '',
                     email: '',
-                    id: 0,
+                    id: 0
                 }
                 addUser(anonymous);
                 login(anonymous);
