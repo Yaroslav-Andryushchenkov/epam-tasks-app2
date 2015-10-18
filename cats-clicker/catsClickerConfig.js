@@ -5,26 +5,31 @@
     angular.module('catsClicker')
         .config(config);
 
-    config.$inject = ['$routeProvider'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function config( $routeProvider) {
-        $routeProvider
-            .when('/addCat',{
+    function config( $stateProvider, $urlRouterProvider) {
+
+
+        $stateProvider
+            .state('addCat',{
                 templateUrl: '/cats-clicker/sections/addCat.html',
                 controller: 'addCatCtrl',
                 controllerAs: 'cat'
             })
-            .when('/addUser',{
+            .state('addUser',{
                 templateUrl: '/cats-clicker/sections/addUser.html',
                 controller: 'addUserCtrl',
                 controllerAs: 'user'
             })
-            .when('/login',{
-            templateUrl: '/cats-clicker/sections/login.html',
-            controller: 'loginCtrl',
-            controllerAs: 'user'
+            .state('login',{
+                templateUrl: '/cats-clicker/sections/login.html',
+                controller: 'loginCtrl',
+                controllerAs: 'user'
             })
-            .when('/about',{
+            .state('list',{
+                template: ''
+            })
+            .state('about',{
                 templateUrl: '/cats-clicker/sections/about.html'
             });;
     }

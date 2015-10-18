@@ -4,5 +4,5 @@
 (function() {
     angular.module('commonUI',[]);
     angular.module('user', ['commonUI','ngCookies']);
-    angular.module('catsClicker', ['ngRoute','user']);
+    angular.module('catsClicker', ['ui.router','user']);
 })();

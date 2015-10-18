@@ -11,16 +11,16 @@
 
 <div>
     <ul>
-        <li><a href="#/login">login</a></li>
-        <li><a href="#/addCat">Add Cat</a></li>
-        <li><a href="#/addUser">Add User</a></li>
-        <li><a href="#/about">About page</a></li>
-        <li><a href="#">Cats list only</a></li>
+        <li><a href='#' ui-sref="login">login</a></li>
+        <li><a href='#' ui-sref="addCat">Add Cat</a></li>
+        <li><a href='#' ui-sref="addUser">Add User</a></li>
+        <li><a href='#' ui-sref="about">About page</a></li>
+        <li><a href='#' ui-sref="list">Cats list only</a></li>
     </ul>
 
 </div>
 
-<ng-view></ng-view>
+<ui-view></ui-view>
 
 <div ng-controller="catsCollectionCtrl as catsList">
 
@@ -67,7 +67,7 @@
 <script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/cats-clicker/libs/angular.js"></script>
 <script src="/cats-clicker/libs/angular-cookies.js"></script>
-<script src="/cats-clicker/libs/angular-route.js"></script>
+<script src="/cats-clicker/libs/angular-ui-router.js"></script>
 <script src="/cats-clicker/libs/angular-cookies.js"></script>
 <script language="JavaScript" src="/cats-clicker/catsClickerApp.js"></script>
 <script language="JavaScript" src="/cats-clicker/catsClickerConfig.js"></script>
