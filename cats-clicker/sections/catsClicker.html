@@ -1,0 +1,35 @@
+
+    <div class="search-panel">
+        <label for="cat-name">Name</label>
+        <input type="text" name="cat-name" id="cat-name" ng-model="catsList.nameFilter"/>
+        <label for="sort-order">Sorting</label>
+        <select type="text" name="sort-order" id="sort-order" ng-model="catsList.sorting">
+            <option value='asc' >Ascending</option>
+            <option value='desc'>Descending</option>
+        </select>
+        <button class="search-button" ng-click="catsList.search();">Search</button>
+    </div>
+
+    <div style="display:inline-block" ng-repeat="cat in catsList.items | filter:catsList.searchObject | orderBy:'name':(catsList.sorting === 'desc') " >
+
+        <img ng-click="catsList.selectCat(cat.id)" ng-src="{{cat.image}}">
+        </img>
+        <p>name:{{cat.name}} <span ng-show="cat.tick" class="tick">&#252;</span> </p>
+        <p ng-show="catsList.canDelete(cat.id)" ><a href="" ng-click="catsList.deleteCat(cat.id)">Delete</a></p>
+
+    </div>
+
+    <div>
+        <h2>Selected cat</h2>
+
+        <img ng-src="{{catsList.items[catsList.selected].image}}">
+        </img>
+
+        <p>name:{{catsList.items[catsList.selected].name}}</p>
+        <p ng-show="catsList.canVote(catsList.items[catsList.selected])"><span class="spinner-arrow" ng-click="catsList.addVote(catsList.items[catsList.selected].id)">&#9650</span>
+            votes:{{catsList.items[catsList.selected].votes}}
+            <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].id)">&#9660</span>
+        </p>
+
+    </div>
+

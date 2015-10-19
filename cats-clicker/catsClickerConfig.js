@@ -27,10 +27,18 @@
                 controllerAs: 'user'
             })
             .state('list',{
-                template: ''
+                url:'',
+                resolve: {
+                    cc: ['catsSrv', function(catsSrv) {
+                        return catsSrv.getCats();
+                    }]
+                },
+                templateUrl: '/cats-clicker/sections/catsClicker.html',
+                controller: 'catsCollectionCtrl',
+                controllerAs: 'catsList'
             })
             .state('about',{
                 templateUrl: '/cats-clicker/sections/about.html'
-            });;
+            });
     }
 })();
