@@ -29,7 +29,7 @@
             .state('list',{
                 url:'',
                 resolve: {
-                    cc: ['catsSrv', function(catsSrv) {
+                    catsCollection: ['catsSrv', function(catsSrv) {
                         return catsSrv.getCats();
                     }]
                 },

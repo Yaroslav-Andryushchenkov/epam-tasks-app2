@@ -5,16 +5,16 @@
     angular.module('catsClicker')
         .controller('catsCollectionCtrl', catsCollectionCtrl);
 
-    catsCollectionCtrl.$inject = ['$scope','$rootScope','catsSrv', 'userSrv', 'cc'];
+    catsCollectionCtrl.$inject = ['$scope','$rootScope','catsSrv', 'userSrv', 'catsCollection'];
 
-    function catsCollectionCtrl($scope, $rootScope, catsSrv, userSrv, cc) {
+    function catsCollectionCtrl($scope, $rootScope, catsSrv, userSrv, catsCollection) {
         var cats = this;
 
         cats.selected = 0;
         cats.sorting = 'asc';
         cats.nameFilter = '';
         cats.searchObject = {name:''};
-        cats.items = cc;
+        cats.items = catsCollection;
         cats.selectCat = selectCat;
         cats.addVote = addVote;
         cats.canVote = canVote;
