@@ -28,7 +28,6 @@
             $scope.$emit('AddNewCat', data);
         }
 
-
         function clearForm() {
             cat.newCat.name = '';
             cat.newCat.url = '';

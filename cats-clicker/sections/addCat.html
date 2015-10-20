@@ -7,24 +7,11 @@
             <label for="cat-name">Name:</label>
             <input set-focus id="cat-name" type="text" name="name" ng-model="cat.newCat.name" />
         </div>
-        <div >
-            <label for="cat-url">URL:</label>
-            <input type="url" required id="cat-url" name="url" ng-model="cat.newCat.url" />
-                <span class="error-message" ng-show="addCat.url.$dirty && addCat.url.$invalid">
-                    <span ng-show="addCat.url.$error.required">Url is required.</span>
-                    <span ng-show="addCat.url.$error.url">Invalid URL.</span>
-                </span>
-        </div>
         <div>
-            <label for="cat-image">Image:</label>
-            <input type="url" required id="cat-image" name="image" ng-model="cat.newCat.image" />
-                <span class="error-message" ng-show="addCat.image.$dirty && addCat.image.$invalid">
-                    <span ng-show="addCat.image.$error.required">Image is required.</span>
-                    <span ng-show="addCat.image.$error.url">Invalid image uri.</span>
-                </span>
+            <image-input url-model="cat.newCat.image" parent-form="addCat"></image-input>
         </div>
 
-        <button  name="btnCancel" ng-click="cat.cancel()"  type="cancel">Cancel</button>
+        <button  name="btnCancel" ng-click="cat.cancel()" type="cancel">Cancel</button>
         <button  name="btnSubmit"  type="submit">Submit</button>
 
     </fieldset>

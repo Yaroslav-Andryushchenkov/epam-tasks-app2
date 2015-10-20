@@ -1,0 +1,6 @@
+<label for="cat-image">Image:</label>
+<input type="url" required id="cat-image" name="image" ng-model="url" />
+<span class="error-message" ng-show="{{form}}.image.$dirty && {{form}}.image.$invalid">
+                    <span ng-show="{{form}}.image.$error.required">Image is required.</span>
+                    <span ng-show="{{form}}.image.$error.url">Invalid image uri.</span>
+</span>
