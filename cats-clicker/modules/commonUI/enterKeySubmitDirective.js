@@ -9,11 +9,11 @@ angular.module('commonUI')
         restrict: 'A',
         link: function (scope, elem, attrs, ctrl) {
             if(attrs.role == 'form') {
-                elem.on('keyup', onKeyUp);
+                elem.on('keydown', onKeyUp);
                 function onKeyUp(e) {
                     if (e.which == 10 || e.which == 13) {
-                        //ctrl.$setSubmitted();
-                       // ctrl.$submit = $parse(attrs.ngSubmit);
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
                         elem[0].elements[attrs.enterKeySubmit].click();
                     }
                 }
