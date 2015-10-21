@@ -1,0 +1,10 @@
+<div class="search-panel">
+    <label for="cat-name">Name</label>
+    <input type="text" name="cat-name" id="cat-name" ng-model="filter"/>
+    <label for="sort-order">Sorting</label>
+    <select type="text" name="sort-order" id="sort-order" ng-model="sorting">
+        <option value='asc' >Ascending</option>
+        <option value='desc'>Descending</option>
+    </select>
+    <button class="search-button" ng-click="search();">Search</button>
+</div>

@@ -1,24 +1,13 @@
-    <div class="search-panel">
-        <label for="cat-name">Name</label>
-        <input type="text" name="cat-name" id="cat-name" ng-model="catsList.nameFilter"/>
-        <label for="sort-order">Sorting</label>
-        <select type="text" name="sort-order" id="sort-order" ng-model="catsList.sorting">
-            <option value='asc' >Ascending</option>
-            <option value='desc'>Descending</option>
-        </select>
-        <button class="search-button" ng-click="catsList.search();">Search</button>
-    </div>
+
+    <search-panel filter="catsList.nameFilter" sorting="catsList.sorting" search="catsList.search"></search-panel>
+
 
     <div style="display:inline-block" ng-repeat="cat in catsList.items | filter:catsList.searchObject | orderBy:'name':(catsList.sorting === 'desc') " >
-
         <cat cat="cat" cats-list="catsList" tick="true" delete="true"></cat>
-
     </div>
 
     <div>
         <h2>Selected cat</h2>
-
         <cat cat="catsList.items[catsList.selected]" cats-list="catsList" spinner="true"></cat>
-
     </div>
 
