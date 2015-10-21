@@ -1,6 +1,6 @@
 <div>
 
-<form role="form" name="addCat" enter-key-submit="btnSubmit" novalidate ng-submit="addCat.$valid && cat.addNewCat()">
+<form name="addCat" enter-key-submit="btnSubmit" novalidate ng-submit="addCat.$valid && cat.addNewCat()">
     <fieldset>
         <legend>Add cat:</legend>
         <div >
@@ -8,7 +8,7 @@
             <input set-focus id="cat-name" type="text" name="name" ng-model="cat.newCat.name" />
         </div>
         <div>
-            <image-input url-model="cat.newCat.image" parent-form="addCat"></image-input>
+            <image-input parent-form="addCat" url-model="cat.newCat.image" image-name="image"></image-input>
         </div>
 
         <button  name="btnCancel" ng-click="cat.cancel()" type="cancel">Cancel</button>

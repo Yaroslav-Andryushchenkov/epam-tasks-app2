@@ -9,8 +9,9 @@ angular.module('commonUI')
         restrict: 'E',
         templateUrl: '/cats-clicker/modules/commonUI/imageInputDirective.html',
         scope: {
+            form: '=parentForm',
             url: '=urlModel',
-            form: '@parentForm'
+            imageName: '@imageName'
         }
     }
 }
