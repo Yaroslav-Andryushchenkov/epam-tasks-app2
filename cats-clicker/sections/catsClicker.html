@@ -1,6 +1,5 @@
 
-    <search-panel filter="catsList.nameFilter" sorting="catsList.sorting" search="catsList.search"></search-panel>
-
+    <search-panel filter="catsList.nameFilter" sorting="catsList.sorting" search="catsList.search()"></search-panel>
 
     <div style="display:inline-block" ng-repeat="cat in catsList.items | filter:catsList.searchObject | orderBy:'name':(catsList.sorting === 'desc') " >
         <cat cat="cat" cats-list="catsList" tick="true" delete="true"></cat>

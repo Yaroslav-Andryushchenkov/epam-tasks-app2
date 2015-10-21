@@ -10,7 +10,7 @@ angular.module('commonUI')
         templateUrl: '/cats-clicker/modules/commonUI/searchPanelDirective.html',
         scope: {
             search: '&search',
-            filter: '=fileter',
+            filter: '=filter',
             sorting: '=sorting'
         }
     }
