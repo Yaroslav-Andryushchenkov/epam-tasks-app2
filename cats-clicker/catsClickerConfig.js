@@ -9,7 +9,6 @@
 
     function config( $stateProvider, $urlRouterProvider) {
 
-
         $stateProvider
             .state('addCat',{
                 templateUrl: '/cats-clicker/sections/addCat.html',

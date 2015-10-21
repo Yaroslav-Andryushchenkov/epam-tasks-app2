@@ -11,27 +11,14 @@
 
     <div style="display:inline-block" ng-repeat="cat in catsList.items | filter:catsList.searchObject | orderBy:'name':(catsList.sorting === 'desc') " >
 
-        <img ng-click="catsList.selectCat(cat.id)" ng-src="{{cat.image}}">
-        </img>
-        <p>name:{{cat.name}} <span ng-show="cat.tick" class="tick">&#252;</span> </p>
-        <p ng-show="catsList.canDelete(cat.id)" ><a href="" ng-click="catsList.deleteCat(cat.id)">Delete</a></p>
+        <cat cat="cat" cats-list="catsList" tick="true" delete="true"></cat>
 
     </div>
 
     <div>
         <h2>Selected cat</h2>
 
-        <img ng-src="{{catsList.items[catsList.selected].image}}">
-        </img>
-
-        <p>name:{{catsList.items[catsList.selected].name}}</p>
-        <p ng-show="catsList.canVote(catsList.items[catsList.selected])">
-            <spinner up="catsList.addVote(catsList.items[catsList.selected].id)"
-                     down="catsList.removeVote(catsList.items[catsList.selected].id)"
-                     current="{{catsList.items[catsList.selected].votes}}">
-
-            </spinner>
-        </p>
+        <cat cat="catsList.items[catsList.selected]" cats-list="catsList" spinner="true"></cat>
 
     </div>
 

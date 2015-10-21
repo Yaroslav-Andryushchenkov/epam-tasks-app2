@@ -1,0 +1,10 @@
+<img ng-click="catsList.selectCat(cat.id)" ng-src="{{cat.image}}">
+</img>
+<p>name:{{cat.name}} <span ng-show="(tick === 'true') && cat.tick" class="tick">&#252;</span> </p>
+<p ng-show="(delete === 'true') && catsList.canDelete(cat.id)" ><a href="" ng-click="catsList.deleteCat(cat.id)">Delete</a></p>
+<p ng-show="(spinner ==='true') && catsList.canVote(cat)">
+    <spinner up="catsList.addVote(cat.id)"
+             down="catsList.removeVote(cat.id)"
+             current="{{cat.votes}}">
+    </spinner>
+</p>
