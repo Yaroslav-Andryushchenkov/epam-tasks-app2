@@ -92,7 +92,6 @@
         }
 
 
-
         function deleteCat(id) {
             catsSrv.deleteCat(id).then(function (data) {
                 for(i=0; i<data.length; i++)

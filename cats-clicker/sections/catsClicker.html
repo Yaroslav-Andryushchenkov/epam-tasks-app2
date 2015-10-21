@@ -1,4 +1,3 @@
-
     <div class="search-panel">
         <label for="cat-name">Name</label>
         <input type="text" name="cat-name" id="cat-name" ng-model="catsList.nameFilter"/>
@@ -26,9 +25,12 @@
         </img>
 
         <p>name:{{catsList.items[catsList.selected].name}}</p>
-        <p ng-show="catsList.canVote(catsList.items[catsList.selected])"><span class="spinner-arrow" ng-click="catsList.addVote(catsList.items[catsList.selected].id)">&#9650</span>
-            votes:{{catsList.items[catsList.selected].votes}}
-            <span class="spinner-arrow" ng-click="catsList.removeVote(catsList.items[catsList.selected].id)">&#9660</span>
+        <p ng-show="catsList.canVote(catsList.items[catsList.selected])">
+            <spinner up="catsList.addVote(catsList.items[catsList.selected].id)"
+                     down="catsList.removeVote(catsList.items[catsList.selected].id)"
+                     current="{{catsList.items[catsList.selected].votes}}">
+
+            </spinner>
         </p>
 
     </div>
